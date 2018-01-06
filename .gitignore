@@ -15,3 +15,10 @@ BuildingEscape/Content/StarterContent/
 
 *.VC.db
 *.VC.opendb
+
+
+#####################################
+# Visual Studio user specific files #
+#####################################
+
+.vs/
