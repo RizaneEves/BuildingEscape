@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.25807.0
+VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Engine", "Engine", "{70216C03-D9D0-43D8-B562-DCD3D5890CA5}"
 EndProject
@@ -30,6 +30,36 @@ Global
 		Shipping|Win64 = Shipping|Win64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D894C899-1DF3-43B6-877F-31EC153D5875}.DebugGame Editor|HTML5.ActiveCfg = BuiltWithUnrealBuildTool|Win32
+		{D894C899-1DF3-43B6-877F-31EC153D5875}.DebugGame Editor|HTML5.Build.0 = BuiltWithUnrealBuildTool|Win32
+		{D894C899-1DF3-43B6-877F-31EC153D5875}.DebugGame Editor|Win32.ActiveCfg = BuiltWithUnrealBuildTool|Win32
+		{D894C899-1DF3-43B6-877F-31EC153D5875}.DebugGame Editor|Win32.Build.0 = BuiltWithUnrealBuildTool|Win32
+		{D894C899-1DF3-43B6-877F-31EC153D5875}.DebugGame Editor|Win64.ActiveCfg = BuiltWithUnrealBuildTool|Win32
+		{D894C899-1DF3-43B6-877F-31EC153D5875}.DebugGame Editor|Win64.Build.0 = BuiltWithUnrealBuildTool|Win32
+		{D894C899-1DF3-43B6-877F-31EC153D5875}.DebugGame|HTML5.ActiveCfg = BuiltWithUnrealBuildTool|Win32
+		{D894C899-1DF3-43B6-877F-31EC153D5875}.DebugGame|HTML5.Build.0 = BuiltWithUnrealBuildTool|Win32
+		{D894C899-1DF3-43B6-877F-31EC153D5875}.DebugGame|Win32.ActiveCfg = BuiltWithUnrealBuildTool|Win32
+		{D894C899-1DF3-43B6-877F-31EC153D5875}.DebugGame|Win32.Build.0 = BuiltWithUnrealBuildTool|Win32
+		{D894C899-1DF3-43B6-877F-31EC153D5875}.DebugGame|Win64.ActiveCfg = BuiltWithUnrealBuildTool|Win32
+		{D894C899-1DF3-43B6-877F-31EC153D5875}.DebugGame|Win64.Build.0 = BuiltWithUnrealBuildTool|Win32
+		{D894C899-1DF3-43B6-877F-31EC153D5875}.Development Editor|HTML5.ActiveCfg = BuiltWithUnrealBuildTool|Win32
+		{D894C899-1DF3-43B6-877F-31EC153D5875}.Development Editor|HTML5.Build.0 = BuiltWithUnrealBuildTool|Win32
+		{D894C899-1DF3-43B6-877F-31EC153D5875}.Development Editor|Win32.ActiveCfg = BuiltWithUnrealBuildTool|Win32
+		{D894C899-1DF3-43B6-877F-31EC153D5875}.Development Editor|Win32.Build.0 = BuiltWithUnrealBuildTool|Win32
+		{D894C899-1DF3-43B6-877F-31EC153D5875}.Development Editor|Win64.ActiveCfg = BuiltWithUnrealBuildTool|Win32
+		{D894C899-1DF3-43B6-877F-31EC153D5875}.Development Editor|Win64.Build.0 = BuiltWithUnrealBuildTool|Win32
+		{D894C899-1DF3-43B6-877F-31EC153D5875}.Development|HTML5.ActiveCfg = BuiltWithUnrealBuildTool|Win32
+		{D894C899-1DF3-43B6-877F-31EC153D5875}.Development|HTML5.Build.0 = BuiltWithUnrealBuildTool|Win32
+		{D894C899-1DF3-43B6-877F-31EC153D5875}.Development|Win32.ActiveCfg = BuiltWithUnrealBuildTool|Win32
+		{D894C899-1DF3-43B6-877F-31EC153D5875}.Development|Win32.Build.0 = BuiltWithUnrealBuildTool|Win32
+		{D894C899-1DF3-43B6-877F-31EC153D5875}.Development|Win64.ActiveCfg = BuiltWithUnrealBuildTool|Win32
+		{D894C899-1DF3-43B6-877F-31EC153D5875}.Development|Win64.Build.0 = BuiltWithUnrealBuildTool|Win32
+		{D894C899-1DF3-43B6-877F-31EC153D5875}.Shipping|HTML5.ActiveCfg = BuiltWithUnrealBuildTool|Win32
+		{D894C899-1DF3-43B6-877F-31EC153D5875}.Shipping|HTML5.Build.0 = BuiltWithUnrealBuildTool|Win32
+		{D894C899-1DF3-43B6-877F-31EC153D5875}.Shipping|Win32.ActiveCfg = BuiltWithUnrealBuildTool|Win32
+		{D894C899-1DF3-43B6-877F-31EC153D5875}.Shipping|Win32.Build.0 = BuiltWithUnrealBuildTool|Win32
+		{D894C899-1DF3-43B6-877F-31EC153D5875}.Shipping|Win64.ActiveCfg = BuiltWithUnrealBuildTool|Win32
+		{D894C899-1DF3-43B6-877F-31EC153D5875}.Shipping|Win64.Build.0 = BuiltWithUnrealBuildTool|Win32
 		{81E2EB69-CDBF-489A-9C53-1EDA3CE6A217}.DebugGame Editor|HTML5.ActiveCfg = HTML5_DebugGame_Editor|Win32
 		{81E2EB69-CDBF-489A-9C53-1EDA3CE6A217}.DebugGame Editor|Win32.ActiveCfg = DebugGame_Editor|Win32
 		{81E2EB69-CDBF-489A-9C53-1EDA3CE6A217}.DebugGame Editor|Win64.ActiveCfg = DebugGame_Editor|x64
@@ -63,5 +93,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{D894C899-1DF3-43B6-877F-31EC153D5875} = {70216C03-D9D0-43D8-B562-DCD3D5890CA5}
 		{81E2EB69-CDBF-489A-9C53-1EDA3CE6A217} = {85EC5398-0571-41F6-B0CC-F8F0489A7011}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8D9E7ED2-EE32-4DFD-B4F0-8EC810BBCB8F}
 	EndGlobalSection
 EndGlobal
