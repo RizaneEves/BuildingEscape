@@ -44,9 +44,9 @@ private:
 
 	float DoorLastOpenTime;
 
-	AActor *TriggerActor;
+	AActor* TriggerActor;
 
-	AActor *Door;
+	AActor* Door;
 	
 
 };
