@@ -29,12 +29,14 @@ void UOpenDoor::BeginPlay()
 
 void UOpenDoor::OpenDoor()
 {
-	Door->SetActorRotation(FRotator(0.0f, OpenAngle, 0.0f));
+	//Door->SetActorRotation(FRotator(0.0f, OpenAngle, 0.0f));
+	OnOpen.Broadcast();
 }
 
 void UOpenDoor::CloseDoor()
 {
-	Door->SetActorRotation(FRotator(0.0f, 0.0f, 0.0f));
+	//Door->SetActorRotation(FRotator(0.0f, 0.0f, 0.0f));
+	OnClose.Broadcast();
 }
 
 
@@ -46,13 +48,12 @@ void UOpenDoor::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompon
 	if (GetTotalMassOnPlate() >= ThresholdMass)
 	{
 		OpenDoor();
-		DoorLastOpenTime = GetWorld()->GetTimeSeconds();
 	}
-
-	if (GetWorld()->GetTimeSeconds() - DoorLastOpenTime >= DoorCloseDelay)
+	else
 	{
 		CloseDoor();
 	}
+
 }
 
 float UOpenDoor::GetTotalMassOnPlate()
