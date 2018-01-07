@@ -23,6 +23,7 @@ protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
 
+
 public:	
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
@@ -35,5 +36,8 @@ private:
 
 	void Grab();
 	void Release();
+	void FindPhysicsHandle();
+	void SetupInputComponent();
+	const FHitResult GetFirstPhysicsBodyInReach();
 	
 };

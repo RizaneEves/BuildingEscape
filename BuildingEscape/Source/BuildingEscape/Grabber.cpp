@@ -26,14 +26,14 @@ void UGrabber::BeginPlay()
 	Owner = GetOwner();
 	UE_LOG(LogTemp, Warning, TEXT("Grabber reporting for duty!"))
 
-	PhysicsHandle = Owner->FindComponentByClass<UPhysicsHandleComponent>();
+	FindPhysicsHandle();
+	SetupInputComponent();
+	
+}
+
+void UGrabber::SetupInputComponent()
+{
 	InputComponent = Owner->FindComponentByClass<UInputComponent>();
-
-	if (!PhysicsHandle) 
-	{
-		UE_LOG(LogTemp, Error, TEXT("Physics handle component not found for %s!"), *(Owner->GetName()))
-	}
-
 	if (!InputComponent)
 	{
 		UE_LOG(LogTemp, Error, TEXT("Input component not found for %s!"), *(Owner->GetName()))
@@ -44,15 +44,10 @@ void UGrabber::BeginPlay()
 		InputComponent->BindAction("Grab", IE_Pressed, this, &UGrabber::Grab);
 		InputComponent->BindAction("Grab", IE_Released, this, &UGrabber::Release);
 	}
-	
 }
 
-
-// Called every frame
-void UGrabber::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
+const FHitResult UGrabber::GetFirstPhysicsBodyInReach()
 {
-	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
-
 	FVector PlayerViewPointLocation;
 	FRotator PlayerViewPointRotation;
 	GetWorld()->GetFirstPlayerController()->GetPlayerViewPoint
@@ -61,22 +56,7 @@ void UGrabber::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompone
 		OUT PlayerViewPointRotation
 	);
 
-	//UE_LOG(LogTemp, Warning, TEXT("Player Viewpoint has Location : %s"), *PlayerViewPointLocation.ToString());
-	//UE_LOG(LogTemp, Warning, TEXT("Player Viewpoint has Rotation : %s"), *PlayerViewPointRotation.ToString());
-
 	FVector LineTraceEnd = PlayerViewPointLocation + PlayerViewPointRotation.Vector() * Reach;
-
-	DrawDebugLine(
-		GetWorld(),
-		PlayerViewPointLocation,
-		LineTraceEnd,
-		FColor(255, 0, 0),
-		false,
-		0.f,
-		0,
-		10.f
-	);
-
 	FHitResult Hit;
 	GetWorld()->LineTraceSingleByObjectType
 	(
@@ -86,17 +66,38 @@ void UGrabber::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompone
 		FCollisionObjectQueryParams(ECollisionChannel::ECC_PhysicsBody),
 		FCollisionQueryParams(FName(TEXT("")), false, Owner)
 	);
+	return Hit;
+}
 
-	AActor* ActorHit = Hit.GetActor();
-	if(ActorHit)
+void UGrabber::FindPhysicsHandle()
+{
+	PhysicsHandle = Owner->FindComponentByClass<UPhysicsHandleComponent>();
+	if (!PhysicsHandle)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("Hitting object with name: %s"), *(ActorHit->GetName()))
+		UE_LOG(LogTemp, Error, TEXT("Physics handle component not found for %s!"), *(Owner->GetName()))
 	}
+}
+
+
+// Called every frame
+void UGrabber::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
+{
+	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
+
+	
 }
 
 void UGrabber::Grab()
 {
 	UE_LOG(LogTemp, Warning, TEXT("Grab key pressed."))
+
+	FHitResult Hit = GetFirstPhysicsBodyInReach();
+
+	AActor* ActorHit = Hit.GetActor();
+	if (ActorHit)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Hitting object with name: %s"), *(ActorHit->GetName()))
+	}
 }
 
 void UGrabber::Release()
