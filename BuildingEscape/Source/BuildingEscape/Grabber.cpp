@@ -4,6 +4,7 @@
 #include "Engine/World.h"
 #include "DrawDebugHelpers.h"
 #include "GameFramework/Actor.h"
+#include "Components/PrimitiveComponent.h"
 
 #define OUT
 
@@ -84,6 +85,20 @@ void UGrabber::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompone
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
+	FVector PlayerViewPointLocation;
+	FRotator PlayerViewPointRotation;
+	GetWorld()->GetFirstPlayerController()->GetPlayerViewPoint
+	(
+		OUT PlayerViewPointLocation,
+		OUT PlayerViewPointRotation
+	);
+
+	FVector LineTraceEnd = PlayerViewPointLocation + PlayerViewPointRotation.Vector() * Reach;
+
+	if (PhysicsHandle->GrabbedComponent)
+	{
+		PhysicsHandle->SetTargetLocation(LineTraceEnd);
+	}
 	
 }
 
@@ -92,16 +107,22 @@ void UGrabber::Grab()
 	UE_LOG(LogTemp, Warning, TEXT("Grab key pressed."))
 
 	FHitResult Hit = GetFirstPhysicsBodyInReach();
-
+	UPrimitiveComponent* ComponentToGrab = Hit.GetComponent();
 	AActor* ActorHit = Hit.GetActor();
 	if (ActorHit)
 	{
 		UE_LOG(LogTemp, Warning, TEXT("Hitting object with name: %s"), *(ActorHit->GetName()))
+		PhysicsHandle->GrabComponent(ComponentToGrab, NAME_None, ActorHit->GetActorLocation(), true);
 	}
+
+	
+
+
 }
 
 void UGrabber::Release()
 {
 	UE_LOG(LogTemp, Warning, TEXT("Grab key released."))
+	PhysicsHandle->ReleaseComponent();
 }
 
