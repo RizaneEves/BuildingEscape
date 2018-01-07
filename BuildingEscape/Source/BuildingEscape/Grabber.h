@@ -39,5 +39,7 @@ private:
 	void FindPhysicsHandle();
 	void SetupInputComponent();
 	const FHitResult GetFirstPhysicsBodyInReach();
+
+	const FVector GetPlayerReachLineEnd(FVector &PlayerViewPointLocation, FRotator &PlayerViewPointRotation);
 	
 };
