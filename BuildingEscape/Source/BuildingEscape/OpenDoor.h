@@ -42,11 +42,14 @@ private:
 	UPROPERTY(EditAnywhere)
 	float DoorCloseDelay = 1.f;
 
+	UPROPERTY(EditAnywhere)
+	float ThresholdMass = 50.f;
+
 	float DoorLastOpenTime;
 
-	AActor* TriggerActor;
 
 	AActor* Door;
 	
+	float GetTotalMassOnPlate();
 
 };
