@@ -49,8 +49,6 @@ void UOpenDoor::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompon
 		DoorLastOpenTime = GetWorld()->GetTimeSeconds();
 	}
 
-	// ...
-
 	if (GetWorld()->GetTimeSeconds() - DoorLastOpenTime >= DoorCloseDelay)
 	{
 		CloseDoor();
@@ -60,6 +58,7 @@ void UOpenDoor::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompon
 float UOpenDoor::GetTotalMassOnPlate()
 {
 	float TotalMass = 0.f;
+	if (!PressurePlate) return TotalMass;
 
 	TArray<AActor*> OverlappingActors;
 	PressurePlate->GetOverlappingActors(OUT OverlappingActors);
