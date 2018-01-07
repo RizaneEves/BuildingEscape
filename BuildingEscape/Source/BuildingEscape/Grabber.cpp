@@ -23,8 +23,15 @@ void UGrabber::BeginPlay()
 {
 	Super::BeginPlay();
 
-	// ...
+	Owner = GetOwner();
 	UE_LOG(LogTemp, Warning, TEXT("Grabber reporting for duty!"));
+
+	PhysicsHandle = Owner->FindComponentByClass<UPhysicsHandleComponent>();
+
+	if (!PhysicsHandle) 
+	{
+		UE_LOG(LogTemp, Error, TEXT("Physics handle component not found for %s!"), *(Owner->GetName()));
+	}
 	
 }
 
@@ -65,7 +72,7 @@ void UGrabber::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompone
 		PlayerViewPointLocation,
 		LineTraceEnd,
 		FCollisionObjectQueryParams(ECollisionChannel::ECC_PhysicsBody),
-		FCollisionQueryParams(FName(TEXT("")), false, GetOwner())
+		FCollisionQueryParams(FName(TEXT("")), false, Owner)
 	);
 
 	AActor* ActorHit = Hit.GetActor();
